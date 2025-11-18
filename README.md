@@ -4,40 +4,38 @@
 ---
 
 ## Introduction
-**Stacked** is an alternative fantasy football format built around drafting NFL teams, placing wagers using those teams, and competing head-to-head through a season-long bankroll system.
+**Stacked** reimagines fantasy football by replacing player management with team drafting, bankroll strategy, sportsbook-style wagers, and live defensive interaction.
 
-Instead of managing players, participants draft a **stack** of NFL teams.  
-Each week, they wager units on games involving their stack (or their opponent’s) under a **weekly hard cap**, while using a single defensive move to disrupt their opponent’s strategy.
+Participants draft a **stack** of NFL teams before the season.  
+Each week, they place bets using only the teams in their stack (and their opponent’s) under a **weekly wager cap**, while using **one defensive move** to disrupt the opponent’s strategy.
 
-Stacked blends:
-- Fantasy-style drafting  
-- Sportsbook-style wagering  
-- Poker-style bankroll management  
-- Light but impactful defensive interaction  
+Stacked combines:
+- Draft strategy  
+- Betting decision-making  
+- Real-time defensive timing  
+- Season-long bankroll management  
 
-The result is a clean, strategic, low-variance format where timing, prediction, and roster construction all matter.
+It is competitive, strategic, elegant, and easy to learn.
 
 ---
 
 ## Core Concepts
 
 ### Your Stack
-Your **stack** is the set of NFL teams you draft before the season.  
-Your stack determines:
-- Which NFL games you are allowed to bet on  
-- What your high-value options are  
-- How vulnerable you are to defensive moves  
-
-The stack is your “hand” for the entire season.
+Your **stack** is the set of NFL teams you draft.  
+Your stack defines:
+- Which NFL games you may bet on  
+- Which teams are vulnerable to being blocked  
+- How flexible or predictable your weekly betting options are  
 
 ### Bankroll
-Each participant begins the season with a **starting bankroll** of units.
+Each participant begins the season with a **starting bankroll**.
 
 Suggested default:
 - **10,000 units**
 
-Bankroll changes based on weekly betting outcomes.  
-Running low affects future weeks (you may not be able to hit the weekly cap).
+Your bankroll changes each week.  
+If it runs low, you may not be able to hit the weekly cap.
 
 ---
 
@@ -45,234 +43,231 @@ Running low affects future weeks (you may not be able to hit the weekly cap).
 
 ### Default League Format
 - **8 participants**
-- **4 NFL teams per participant**
+- **4 NFL teams per participant**  
 - All 32 NFL teams drafted once  
-- No waivers required  
-- Perfect symmetry and clean gameplay
+- No waivers needed  
 
-This is the recommended official format.
-
-### Custom League Sizes
-Larger leagues are supported using the **Team Pool Multiplier**.
+This is the recommended format for a clean, competitive season.
 
 ---
 
 ## Team Pool Multiplier (Commissioner Setting)
 
-The multiplier determines how many copies of each NFL team exist.
-
+The commissioner may scale league size by configuring:
 TEAM_POOL_MULTIPLIER = 1 | 2 | 3
 
 
-| Multiplier | Description | Total Draftable Assets | Recommended League Sizes |
+| Multiplier | Description | Total Draftable Teams | Recommended League Sizes |
 |------------|-------------|------------------------|--------------------------|
 | **1×** (Default) | Each team drafted once | 32 | 8 participants |
 | **2×** | Two copies of each team | 64 | 8–12 participants |
 | **3×** | Three copies of each team | 96 | 12–16 participants |
 
-Copies behave as independent assets (e.g., “Chiefs A” and “Chiefs B”).
+Copies (e.g., “Chiefs A” and “Chiefs B”) function as independent assets.
 
 ---
 
 ## Draft
 
 ### Format
-- Standard snake draft  
-- Participants draft until they reach the configured stack size  
-- Drafted teams remain on that participant’s stack all season  
+- Snake draft  
+- Draft until each participant reaches the configured stack size  
+- Teams remain rostered all season  
+- Trades optional  
 
-### Strategy
-Participants aim to build stacks that:
-- Create strong weekly betting options  
-- Can survive defensive pressure  
-- Keep opponents limited in game choice  
-- Balance high-floor vs. high-variance teams  
+### Strategy Factors
+- Betting flexibility  
+- Stack depth  
+- Defensive resilience  
+- Opponent overlap  
+- Team volatility  
+
+Your stack is your hand for the entire season.
 
 ---
 
 ## Weekly Betting Rules
 
 ### Weekly Hard Cap
-Each participant may stake **up to** a fixed number of units per week.
+Each participant may stake **up to a fixed number of units** per week.
 
 Suggested default:
 - **1,000 units**
 
-This is a hard cap:
-- You may not exceed the cap  
-- You may stake less than the cap (not recommended)  
-- Your stakes come from your persistent bankroll  
+- You may stake **less**, but never more  
+- Stake must come from your current bankroll  
+- Hard cap ensures fairness and strategic consistency  
 
 ### Minimum Bet Size
 Suggested default:
 - **100 units**
 
-Prevents micro-betting and preserves game clarity.
+Prevents trivial micro-betting.
 
 ### Maximum Bet Size
-- No maximum beyond the weekly hard cap  
-- Participants choose how to allocate the cap
+- No max other than the weekly cap  
 
 ### Bet Eligibility
-You may place bets only on NFL games involving:
-- Teams in **your stack**, and/or  
+You may bet only on games involving:
+- Teams in **your stack**  
 - Teams in **your opponent’s stack**
 
-This keeps the game tightly tied to draft strategy.
+This ties gameplay directly to draft strategy.
 
-### Bet Types (Configurable)
-Default allowed types:
+### Allowed Bet Types (Configurable)
 - Moneyline  
 - Spread  
 - Team Totals  
 
-Parlays are optional and disabled by default.
+Parlays optional (off by default).
 
 ### No Bet Count Requirement
-Participants are not required to place a specific number of bets.
+Participants may make as many or as few bets as they want, as long as total stakes meet the weekly cap.
 
 Examples:
-- 1 bet of 1,000 units  
-- 4 bets of 250 units  
-- 10 bets of 100 units  
-All are legal.
+- 1 × 1,000  
+- 4 × 250  
+- 10 × 100  
+All are valid.
 
 ### Weekly Score (Stack Score)
-Each week’s result is determined by **net profit**: 
+Weekly outcome is based on **net profit**:
 Stack Score = Total Returns – Total Stakes
 
 
-Higher Stack Score wins the matchup.
+The higher Stack Score wins the matchup.
 
-Bankroll updates accordingly.
+Bankroll is updated accordingly.
 
 ---
 
 ## Stack Defense (Live Defensive Interaction)
 
-Each participant may perform **one** defensive action per week.  
-Defense occurs **after the sportsbook opens**, in real time, before the opponent finalizes certain bets.
+Each participant may use **one defensive action per week**:  
+**Block** or **Counter**.
 
 ### Sportsbook Timing
-The commissioner defines: SPORTSBOOK_OPEN_TIME
+The commissioner configures:
+SPORTSBOOK_OPEN_TIME
+
 
 Example:
 - Tuesday at 10:00 AM local time
 
 Once the sportsbook opens:
-- Participants may place bets anytime  
-- Participants may use their one defensive action anytime  
-- Defensive actions **cannot** affect already-placed bets  
+- Participants may place bets at any time  
+- Participants may use their one defensive move at any time  
+- Defensive moves **cannot** affect bets already placed  
 
-This creates a timing and prediction game around bet selection.
+This creates a timing-based strategic layer:
+- Should you block early?  
+- Should you wait and see where they lean?  
+- Are they baiting you?  
+- Will they rush their best bet before you stop it?  
+
+This timing game is core to Stacked.
 
 ---
 
-## Defensive Moves
+## Defensive Abilities
 
 ### 1. Block
-Block prevents your opponent from betting **one specific NFL team** for the entire week.
+Block removes an opponent’s ability to use **one specific NFL team** for the entire week.
 
-**Timing:**
-- Can be used anytime after the sportsbook opens  
-- Only valid if the opponent has NOT yet placed a bet involving that team  
-- Once used, the team is removed from their available pool
+**Rules:**
+- You may use Block anytime after the sportsbook opens  
+- You may **only** block a team **if your opponent has not yet placed a bet involving that team**  
+- Once Block is used, it is permanent for the week  
+- You cannot block multiple teams  
 
 **Example:**
-Opponent hasn’t bet the Chiefs yet →  
-You Block ↑ Chiefs →  
-Opponent may not use Chiefs for any bet this week.
+Opponent hasn’t yet bet Chiefs  
+→ You Block Chiefs  
+→ They cannot bet Chiefs this week
+
+If they *had* bet Chiefs earlier, Block would be invalid.
 
 ---
 
 ### 2. Counter
-Counter worsens the odds on a specific bet your opponent *might* take.
+Counter worsens the odds of a specific bet option your opponent **might** take.
 
-**Timing:**
-- May target any single bet option (team + line)  
-- Only applies if the opponent chooses that bet later  
-- If they avoid it, your Counter is wasted
+**Rules:**
+- You may Counter any unplaced bet option  
+- If your opponent later chooses that exact bet, they receive worsened odds  
+- If they avoid the bet, your Counter has no effect  
+- You cannot Counter multiple bets  
 
 **Example:**
-Opponent is eyeing Cowboys ML (–110) →  
-You Counter Cowboys ML → now (–130) if they take it.
+Opponent is eyeing  
+- Cowboys ML (–110)
+
+You Counter it:  
+- Cowboys ML becomes (–130) *if* they take it  
+- They can choose to avoid it  
+
+Counter is a predictive, mind-game tool.
 
 ---
 
-### 3. Mirror
-Mirror copies one bet your opponent has already placed.
+### Defense Summary (v1)
+- **One defensive move per week**  
+- Choose **Block** *or* **Counter**  
+- Defense must be used **before** an opponent finalizes the affected bet  
+- Defense never deletes or modifies existing bets  
+- Timing is everything
 
-**Timing:**
-- May only be used AFTER the opponent has locked in a bet  
-- You add the same wager to your own Bet Card  
-- They keep their bet; you simply neutralize its advantage
-
-**Example:**
-Opponent places Vikings –2.5 (400 units) →  
-You Mirror → you also take Vikings –2.5 (400 units).
-
----
-
-### Defense Summary
-Participants may use **only ONE** defensive ability per week:
-- Block  
-- OR Counter  
-- OR Mirror  
-
-Defense cannot alter or delete existing bets.  
-Defense interacts only with **unplaced** (Block/Counter) or **just-placed** bets (Mirror).
+This creates a balanced, elegant defense system fully aligned with Stacked’s gameplay.
 
 ---
 
 ## Weekly Flow Summary
 
-1. **SPORTSBOOK OPENS** (e.g., Tuesday 10 AM)  
+1. **SPORTSBOOK OPENS** (e.g., Tuesday 10:00 AM)  
 2. Participants begin placing bets  
-3. Participants may use their one defensive action at any time  
-4. Once a bet is placed, it becomes immune to being Blocked or Countered  
-5. Betting window closes at commissioner-defined deadline  
-6. Games play out  
-7. Stack Scores calculated  
-8. Bankrolls updated  
-9. Matchup results posted  
+3. Each participant may use **one** defensive action  
+4. Once a bet is placed, it becomes immune to Block or Counter  
+5. Betting closes at commissioner-set deadline  
+6. Games resolve; Stack Scores calculated  
+7. Bankroll updated  
+8. Matchup results posted  
 
 ---
 
 ## Standings & Season Results
 
 ### Matchups
-- Each week is head-to-head  
 - Higher Stack Score wins  
-- Losses reduce bankroll; wins grow bankroll  
+- Losses reduce bankroll, wins grow it  
 
 ### Standings Points
-- Win = 1 point  
-- Tie = 0.5 points  
-- Loss = 0 points  
+- Win = 1  
+- Tie = 0.5  
+- Loss = 0  
 
 ### Tiebreakers
 1. Total season Stack Score  
 2. Head-to-head  
-3. Strength of opposition stacks  
+3. Strength of opponent stacks  
 
-### Optional Secondary Leaderboard
+### Additional Leaderboard (optional)
 - **Stack Champion:** highest ending bankroll  
 
 ---
 
 ## Trades (Optional)
 Commissioners may enable trades of:
-- NFL teams (stack assets)  
-- Future draft picks  
-- Unit transfers (if desired)  
+- NFL teams  
+- Draft picks  
+- Unit transfers  
 
-Trade deadlines are configurable.
+Trade deadlines configurable.
 
 ---
 
 ## Commissioner Configuration
 
-### Required Settings
+### Required
 - Team Pool Multiplier  
 - Starting Bankroll  
 - Weekly Hard Cap  
@@ -280,41 +275,32 @@ Trade deadlines are configurable.
 - Sportsbook Open Time  
 - Weekly Bet Deadline  
 
-### Optional Settings
+### Optional
 - Allowed bet types  
-- Parlay on/off  
+- Parlay toggle  
 - Trade rules  
-- Season schedule  
-- Playoff format  
+- Schedule and playoff format  
 - End-of-season awards  
 
 ---
 
 ## Example Week
 
-**Player A Stack:** Chiefs, Saints, Bengals, Bears  
-**Player B Stack:** 49ers, Cowboys, Jets, Lions  
+Player A Stack: Chiefs, Bengals, Bears, Saints  
+Player B Stack: 49ers, Cowboys, Jets, Lions  
 
-- Player B places 600 units on 49ers ML  
-- Player A Blocks “Cowboys” before opponent uses them  
-- Player A places 400 units on Chiefs –3.5  
-- Player B Counters Bengals +6.5 before Player A bets it  
-- Player A avoids the Countered bet  
-- Player B Mirrors Chiefs –3.5  
-- Both complete up to their 1,000-unit cap  
-- Games resolve and Stack Scores determine the winner  
+- Player B places 500 units on 49ers ML  
+- Player A uses Block on Cowboys before B uses them  
+- Cowboys are now unavailable to B  
+- Player A attempts Bengals +6.5 for 300 units  
+- Player B Counters Bengals +6.5 before A locks it  
+- A avoids the Countered bet and reallocates  
+- Both participants hit the 1,000-unit cap  
+- Games resolve; Stack Scores determine the winner  
 
 ---
 
 ## Summary
-**Project Stacked** combines fantasy drafting, sports betting, and tactical timing into a single competitive format. Participants draft NFL teams, build bets from those teams under a weekly hard cap, and strategically use one defensive move per week to disrupt their opponent—all while managing a persistent bankroll that reflects long-term performance.
+**Project Stacked** merges fantasy drafting, sportsbook-style betting, and real-time defensive timing into a unique competitive experience. Participants manage a persistent bankroll, draft the teams that define their betting options, and use one defensive move each week to disrupt opponent strategy—all under a fair, skill-based weekly cap.
 
-Stacked is designed to be:
-- Clean  
-- Balanced  
-- Skill-based  
-- Configurable  
-- Competitive  
-- Fun  
-
-**Draft your stack. Build your card. Time your defense. Grow your bankroll.**
+**Draft your stack. Time your defense. Build your bankroll. Win the week.**
