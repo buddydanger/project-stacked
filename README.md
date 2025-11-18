@@ -14,6 +14,8 @@ Stacked combines:
 - Betting decision-making  
 - Real-time defensive timing  
 - Season-long bankroll management  
+- Multi-tier promotion/relegation leagues  
+- Integrated communication platform  
 
 It is competitive, strategic, elegant, and easy to learn.
 
@@ -31,11 +33,16 @@ Your stack defines:
 ### Bankroll
 Each participant begins the season with a **starting bankroll**.
 
-Suggested default:
-- **10,000 units**
+**Calculation:**
+Starting Bankroll = (Number of Weeks × Weekly Cap) ÷ 2
 
-Your bankroll changes each week.  
-If it runs low, you may not be able to hit the weekly cap.
+This starting amount is **half** of what would be needed to max bet every week for the entire season.
+
+**Strategic Impact:**
+- You cannot max bet every week if you lose consistently  
+- Building your bankroll through wins gives you more flexibility later in the season  
+- Bankroll management becomes a key strategic decision: aggressive betting to grow your stack, or conservative play to preserve capital  
+- Participants with larger bankrolls have more options and can sustain losses better
 
 ---
 
@@ -63,7 +70,32 @@ TEAM_POOL_MULTIPLIER = 1 | 2 | 3
 | **2×** | Two copies of each team | 64 | 8–12 participants |
 | **3×** | Three copies of each team | 96 | 12–16 participants |
 
-Copies (e.g., “Chiefs A” and “Chiefs B”) function as independent assets.
+Copies (e.g., "Chiefs A" and "Chiefs B") function as independent assets.
+
+---
+
+## Promotion & Relegation (Pro/Rel)
+
+Leagues can be **stacked** vertically in a promotion/relegation pyramid, creating a multi-tier competitive structure.
+
+### How It Works
+- **Multiple tiers** of leagues (e.g., Premier, Championship, League One)  
+- **Bottom finishers** in higher tiers are **relegated** to the tier below  
+- **Top finishers** in lower tiers are **promoted** to the tier above  
+- Each tier operates independently with its own draft and season  
+
+### Benefits
+- Creates long-term competitive stakes beyond a single season  
+- Rewards consistent performance with promotion opportunities  
+- Adds drama to the bottom of standings (relegation battles)  
+- Allows leagues to form competitive ecosystems  
+- Participants can work their way up through the tiers  
+
+### Configuration
+- Number of tiers in the pyramid  
+- Promotion/relegation spots per tier (typically 2-3 teams)  
+- Playoff structure for promotion/relegation  
+- Cross-tier scheduling (optional)
 
 ---
 
@@ -73,7 +105,7 @@ Copies (e.g., “Chiefs A” and “Chiefs B”) function as independent assets.
 - Snake draft  
 - Draft until each participant reaches the configured stack size  
 - Teams remain rostered all season  
-- Trades optional  
+- Trades available throughout the season  
 
 ### Strategy Factors
 - Betting flexibility  
@@ -238,16 +270,22 @@ This creates a balanced, elegant defense system fully aligned with Stacked’s g
 
 ### Matchups
 - Higher Stack Score wins  
+- If Stack Scores are equal, tiebreakers determine the winner (see below)  
 - Losses reduce bankroll, wins grow it  
 
 ### Standings Points
 - Win = 1  
-- Tie = 0.5  
 - Loss = 0  
 
-### Tiebreakers
+### Weekly Tiebreakers (for equal Stack Scores)
+If two participants have the same Stack Score in a matchup, the winner is determined by:
+1. **Number of bets placed** — More bets wins (rewarding diversification and strategic betting)  
+2. Total units staked (if bet count is equal)  
+3. Highest single bet return (if still tied)
+
+### Season Tiebreakers (for standings)
 1. Total season Stack Score  
-2. Head-to-head  
+2. Head-to-head record  
 3. Strength of opponent stacks  
 
 ### Additional Leaderboard (optional)
@@ -255,13 +293,22 @@ This creates a balanced, elegant defense system fully aligned with Stacked’s g
 
 ---
 
-## Trades (Optional)
-Commissioners may enable trades of:
-- NFL teams  
-- Draft picks  
-- Unit transfers  
+## Trades
+**Trades are available throughout the season** to help participants adapt their stacks, respond to injuries, capitalize on emerging teams, and adjust strategy based on weekly matchups.
 
-Trade deadlines configurable.
+Participants may trade:
+- **NFL teams** — Swap teams to improve betting flexibility or defensive options  
+- **Draft picks** — Exchange future draft capital (if applicable)  
+- **Unit transfers** — Include bankroll units as part of trade packages  
+
+**Strategic Benefits:**
+- Adapt to season-long team performance changes  
+- Respond to injuries or roster changes affecting NFL teams  
+- Optimize stack composition for upcoming matchups  
+- Balance betting flexibility with defensive resilience  
+- Recover from early-season draft mistakes  
+
+Trade deadlines are configurable by the commissioner. Trades throughout the regular season keep strategy dynamic and engaging.
 
 ---
 
@@ -269,8 +316,9 @@ Trade deadlines configurable.
 
 ### Required
 - Team Pool Multiplier  
-- Starting Bankroll  
+- Number of Weeks (season length)  
 - Weekly Hard Cap  
+- Starting Bankroll (calculated as: Number of Weeks × Weekly Cap ÷ 2)  
 - Minimum Bet Size  
 - Sportsbook Open Time  
 - Weekly Bet Deadline  
@@ -278,7 +326,7 @@ Trade deadlines configurable.
 ### Optional
 - Allowed bet types  
 - Parlay toggle  
-- Trade rules  
+- Trade rules and deadlines  
 - Schedule and playoff format  
 - End-of-season awards  
 
@@ -297,6 +345,51 @@ Player B Stack: 49ers, Cowboys, Jets, Lions
 - A avoids the Countered bet and reallocates  
 - Both participants hit the 1,000-unit cap  
 - Games resolve; Stack Scores determine the winner  
+
+---
+
+## Platform & Communication
+
+### Built-In Chat
+Stacked includes **integrated chat** directly in the platform, eliminating the need for external communication tools like Slack or Discord.
+
+**Features:**
+- **League-specific channels** — General discussion, trade talk, trash talk, strategy  
+- **Direct messaging** — Private conversations between participants  
+- **Game alerts** — Real-time notifications for bets, defensive moves, and results  
+- **Rich media support** — Share screenshots, memes, and reactions  
+- **Message history** — Full conversation logs for each league  
+
+Communication is central to the Stacked experience, fostering community and strategic discussion.
+
+### Multi-League Accounts
+Participants can join **multiple leagues** with a single account.
+
+**Benefits:**
+- Manage all your leagues from one dashboard  
+- Switch between leagues seamlessly  
+- Compare performance across different competitive levels  
+- Join both casual and competitive leagues  
+- Participate in pro/rel pyramid structures  
+
+Your account tracks:
+- All league memberships and standings  
+- Cross-league statistics and achievements  
+- Unified notification center  
+- Personal performance history  
+
+### Digital Extras & Customization
+Express yourself with **paid digital extras** that enhance your online presence.
+
+**Available Customization:**
+- **Profile themes** — Custom colors, backgrounds, and layouts  
+- **Avatar frames** — Decorative borders and effects  
+- **Animated emojis** — League-specific reaction packs  
+- **Chat badges** — Special icons and titles  
+- **Victory celebrations** — Custom animations for wins  
+- **Team logos** — Custom team branding (for commissioners)  
+
+All digital extras are **cosmetic only** and do not affect gameplay. They support platform development while letting you personalize your Stacked experience.
 
 ---
 
