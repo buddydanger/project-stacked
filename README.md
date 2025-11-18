@@ -1,3 +1,58 @@
+# Project Stacked
+*A draft-based, head-to-head fantasy football game where your weekly score is determined by betting with the NFL teams in your stack.*
+
+---
+
+## Introduction
+**Stacked** is a modern fantasy football format where participants draft **NFL teams** instead of players. Each participant’s “stack” of NFL teams determines which games they can wager on each week. Weekly matchups are scored using **net betting profit**, introducing a clean, strategic alternative to traditional fantasy formats.
+
+Project Stacked preserves the best parts of fantasy football:
+- Preseason draft  
+- Weekly matchups  
+- Standings and playoffs  
+- Trade value and roster strategy  
+
+And adds new competitive elements:
+- Betting-based scoring  
+- Defensive mechanics  
+- Restricted wager pools tied directly to drafted teams  
+- A scalable team pool for different league sizes  
+
+Project Stacked creates a high-skill, low-luck fantasy system centered on game theory, roster construction, and weekly decision-making.
+
+---
+
+## Core Concepts
+
+### Your Stack
+Your **stack** is the group of NFL teams you draft.  
+These teams define:
+- Which NFL games you are allowed to bet on  
+- Your weekly offensive options  
+- Your susceptibility to opponent defensive actions  
+
+In the default format, each participant drafts **4 NFL teams**, forming a poker-like hand you “play” each week.
+
+---
+
+## League Structure
+
+### Default League Format
+- **8 participants**
+- **4 NFL teams per participant**
+- All 32 NFL teams drafted exactly once  
+- No waivers required  
+
+This is the official, recommended mode.
+
+### Custom League Sizes
+Larger leagues can use the **Team Pool Multiplier** to increase the number of copies of each NFL team available in the draft.
+
+---
+
+## Team Pool Multiplier (Commissioner Setting)
+
+To support flexible league sizes, commissioners may set: TEAM_POOL_MULTIPLIER = 1 | 2 | 3
 
 ### Multiplier Overview
 
